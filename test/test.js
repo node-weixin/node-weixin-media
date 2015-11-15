@@ -61,6 +61,22 @@ describe('node-weixin-media node module', function () {
     });
   });
 
+  it('should be able to upload a permanent media of video', function (done) {
+    var file = path.resolve(__dirname, "media/image.mp4");
+    media.permanent.create(app, auth, 'video', file, function () {
+      done();
+    }, 'this is an video');
+  });
+
+  it('should be able to upload a permanent media of video', function (done) {
+    var file = path.resolve(__dirname, "media/image.mp4");
+    media.permanent.create(app, auth, 'sss', file, function (error, json) {
+      assert.equal(true, error);
+      assert.equal(true, json.errmsg === 'Invalid type');
+      done();
+    }, 'this is an video');
+  });
+
   it('should be able to get a permanent media', function (done) {
     var tmp = require('tmp');
     var file = tmp.tmpNameSync();
