@@ -9,7 +9,7 @@ module.exports = {
   count: function (app, auth, cb) {
     auth.determine(app, function() {
       var url = permanentUrl + 'get_materialcount?' + util.toParam({
-          access_token: auth.accessToken
+          access_token: app.auth.accessToken
         });
       request.json(url, null, cb);
     });
@@ -22,7 +22,7 @@ module.exports = {
         count: limit
       };
       var url = permanentUrl + 'batchget_material?' + util.toParam({
-          access_token: auth.accessToken
+          access_token: app.auth.accessToken
         });
       request.json(url, data, cb);
     });

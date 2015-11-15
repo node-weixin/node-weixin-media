@@ -1,4 +1,4 @@
-#  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+#  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coveralls Status][coveralls-image]][coveralls-url]
 
 > Media Api for weixin
 
@@ -234,3 +234,5 @@ MIT © [calidion](blog.3gcnbeta.com)
 [travis-url]: https://travis-ci.org/node-weixin/node-weixin-media
 [daviddm-image]: https://david-dm.org/node-weixin/node-weixin-media.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/node-weixin/node-weixin-media
+[coveralls-image]: https://coveralls.io/repos/node-weixin/node-weixin-media/badge.svg?branch=master&service=github
+[coveralls-url]: https://coveralls.io/github/node-weixin/node-weixin-media?branch=master

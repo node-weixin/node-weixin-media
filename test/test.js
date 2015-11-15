@@ -32,7 +32,8 @@ describe('node-weixin-media node module', function () {
 
 
   it('should be able to get a temporary media', function (done) {
-    var file = path.resolve(__dirname, "output/temporary.jpg");
+    var tmp = require('tmp');
+    var file = tmp.tmpNameSync();
     media.temporary.get(app, auth, mediaId, file, function (error) {
       assert(!error);
       done();
@@ -40,10 +41,8 @@ describe('node-weixin-media node module', function () {
   });
 
   it('should be able to get a temporary media', function (done) {
-    var file = path.resolve(__dirname, "output/temporary.jpg");
-    if (fs.existsSync(file)) {
-      fs.unlink(file);
-    }
+    var tmp = require('tmp');
+    var file = tmp.tmpNameSync();
     media.temporary.get(app, auth, mediaId, file, function (error) {
       assert(!error);
       assert(fs.existsSync(file));
@@ -63,8 +62,10 @@ describe('node-weixin-media node module', function () {
   });
 
   it('should be able to get a permanent media', function (done) {
+    var tmp = require('tmp');
+    var file = tmp.tmpNameSync();
+
     media.permanent.get(app, auth, mediaId, function (error, body) {
-      var file = path.resolve(__dirname, "output/permanent.jpg");
       fs.writeFileSync(file, new Buffer(body));
       done();
     });
