@@ -35,9 +35,9 @@
     }
     
 
-交流QQ群: 39287176
-
 注:
+
+交流QQ群: 39287176
 
  [node-weixin-express](https://github.com/node-weixin/node-weixin-express)是基于node-weixin-*的服务器端参考实现。
 
@@ -75,8 +75,8 @@
 10. [node-weixin-media](https://github.com/node-weixin/node-weixin-media)
     微信多媒体API
 
-11. [node-weixin-qrcode](https://github.com/node-weixin/node-weixin-qrcode)
-    微信二维码API
+11. [node-weixin-link](https://github.com/node-weixin/node-weixin-link)
+    微信推广(二维码,URL)API
 
 
 ## Install
@@ -225,7 +225,7 @@ $ node-weixin-media --help
 
 ## License
 
-MIT © [calidion](blog.3gcnbeta.com)
+MIT © [node-weixin](www.node-weixin.com)
 
 
 [npm-image]: https://badge.fury.io/js/node-weixin-media.svg
