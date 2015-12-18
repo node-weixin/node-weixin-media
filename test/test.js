@@ -11,7 +11,6 @@ describe('node-weixin-media node module', function () {
     secret: process.env.APP_SECRET,
     token: process.env.APP_TOKEN
   };
-  var auth = require("node-weixin-auth");
   var config = require("node-weixin-config");
   config.app.init(app);
 
@@ -21,7 +20,7 @@ describe('node-weixin-media node module', function () {
   it('should be able to upload a temporary media', function (done) {
     var file = path.resolve(__dirname, "media/image.jpg");
 
-    media.temporary.create(app, auth, 'image', file, function (error, json) {
+    media.temporary.create(app, 'image', file, function (error, json) {
       assert.equal(true, json.type === 'image');
       assert.equal(true, typeof json.media_id === 'string');
       mediaId = json.media_id;
@@ -34,7 +33,7 @@ describe('node-weixin-media node module', function () {
   it('should be able to get a temporary media', function (done) {
     var tmp = require('tmp');
     var file = tmp.tmpNameSync();
-    media.temporary.get(app, auth, mediaId, file, function (error) {
+    media.temporary.get(app, mediaId, file, function (error) {
       assert(!error);
       done();
     });
@@ -43,7 +42,7 @@ describe('node-weixin-media node module', function () {
   it('should be able to get a temporary media', function (done) {
     var tmp = require('tmp');
     var file = tmp.tmpNameSync();
-    media.temporary.get(app, auth, mediaId, file, function (error) {
+    media.temporary.get(app, mediaId, file, function (error) {
       assert(!error);
       assert(fs.existsSync(file));
       done();
@@ -53,7 +52,7 @@ describe('node-weixin-media node module', function () {
 
   it('should be able to upload a permanent media', function (done) {
     var file = path.resolve(__dirname, "media/image.jpg");
-    media.permanent.create(app, auth, 'image', file, function (error, json) {
+    media.permanent.create(app, 'image', file, function (error, json) {
       assert.equal(true, typeof json.media_id === 'string');
       mediaId = json.media_id;
       assert.equal(true, validator.isURL(json.url));
@@ -63,14 +62,14 @@ describe('node-weixin-media node module', function () {
 
   it('should be able to upload a permanent media of video', function (done) {
     var file = path.resolve(__dirname, "media/image.mp4");
-    media.permanent.create(app, auth, 'video', file, function () {
+    media.permanent.create(app, 'video', file, function () {
       done();
     }, 'this is an video');
   });
 
   it('should be able to upload a permanent media of video', function (done) {
     var file = path.resolve(__dirname, "media/image.mp4");
-    media.permanent.create(app, auth, 'sss', file, function (error, json) {
+    media.permanent.create(app, 'sss', file, function (error, json) {
       assert.equal(true, error);
       assert.equal(true, json.errmsg === 'Invalid type');
       done();
@@ -81,7 +80,7 @@ describe('node-weixin-media node module', function () {
     var tmp = require('tmp');
     var file = tmp.tmpNameSync();
 
-    media.permanent.get(app, auth, mediaId, function (error, body) {
+    media.permanent.get(app, mediaId, function (error, body) {
       fs.writeFileSync(file, new Buffer(body));
       done();
     });
@@ -99,7 +98,7 @@ describe('node-weixin-media node module', function () {
         "content_source_url": 'http://www.sina.com.cn'
       }]
     };
-    media.permanent.news(app, auth, json, function (error, json) {
+    media.permanent.news(app, json, function (error, json) {
       newsId = json.media_id;
       assert.equal(true, !error);
       assert.equal(true, typeof json.media_id === 'string');
@@ -122,7 +121,7 @@ describe('node-weixin-media node module', function () {
         "content_source_url": 'http://www.sina.com.cn'
       }
     };
-    media.permanent.update(app, auth, json, function (error, data) {
+    media.permanent.update(app, json, function (error, data) {
       assert.equal(true, !error);
       assert.equal(true, data.errcode === 0);
       assert.equal(true, data.errmsg === 'ok');
@@ -131,7 +130,7 @@ describe('node-weixin-media node module', function () {
   });
 
   it('should be able to get media count', function (done) {
-    media.count(app, auth, function (error, json) {
+    media.count(app, function (error, json) {
       assert.equal(true, validator.isNumeric(json.voice_count) && json.voice_count >= 0);
       assert.equal(true, validator.isNumeric(json.video_count) && json.video_count >= 0);
       assert.equal(true, validator.isNumeric(json.image_count) && json.image_count >= 0);
@@ -145,7 +144,7 @@ describe('node-weixin-media node module', function () {
     var offset = 0;       //
     var limit = 5;        //Range from 1 ~ 20
 
-    media.list(app, auth, type, limit, offset, function (error, json) {
+    media.list(app, type, limit, offset, function (error, json) {
 
       assert.equal(true, validator.isNumeric(json.total_count) && json.total_count >= 0);
       assert.equal(true, validator.isNumeric(json.item_count) && json.item_count >= 0);
@@ -159,7 +158,7 @@ describe('node-weixin-media node module', function () {
   });
 
   it('should be able to remove a permanent news', function (done) {
-    media.permanent.remove(app, auth, newsId, function (error, data) {
+    media.permanent.remove(app, newsId, function (error, data) {
       assert.equal(true, !error);
       assert.equal(true, data.errcode === 0);
       assert.equal(true, data.errmsg === 'ok');

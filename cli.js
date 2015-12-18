@@ -4,8 +4,6 @@ var meow = require('meow');
 var nodeWeixinMedia = require('./');
 var config = require('node-weixin-config');
 
-var auth = require('node-weixin-auth').create();
-
 var cli = meow({
   help: [
     'Usage',
@@ -53,30 +51,30 @@ switch (command) {
   case 'remark':
     var openid = cli.flags.openid;
     var remark = cli.flags.remark;
-    nodeWeixinMedia[command](app, auth, openid, remark, callback(command));
+    nodeWeixinMedia[command](app, openid, remark, callback(command));
     break;
   case 'list':
   case 'profile':
     var openid = cli.flags.openid || null;
-    nodeWeixinMedia[command](app, auth, openid, callback(command));
+    nodeWeixinMedia[command](app, openid, callback(command));
     break;
   case 'group':
     var subCmd = cli.input[1];
     switch (subCmd) {
       case 'create':
-        nodeWeixinMedia[command][subCmd](app, auth, cli.flags.name, callback(command));
+        nodeWeixinMedia[command][subCmd](app, cli.flags.name, callback(command));
         break;
       case 'get':
-        nodeWeixinMedia[command][subCmd](app, auth, callback(command));
+        nodeWeixinMedia[command][subCmd](app, callback(command));
         break;
       case 'in':
-        nodeWeixinMedia[command][subCmd](app, auth, cli.flags.openid, callback(command));
+        nodeWeixinMedia[command][subCmd](app, cli.flags.openid, callback(command));
         break;
       case 'update':
-        nodeWeixinMedia[command][subCmd](app, auth, cli.flags.groupid, cli.flags.name, callback(command));
+        nodeWeixinMedia[command][subCmd](app, cli.flags.groupid, cli.flags.name, callback(command));
         break;
       case 'move':
-        nodeWeixinMedia[command][subCmd](app, auth, cli.flags.groupid, cli.flags.openid, callback(command));
+        nodeWeixinMedia[command][subCmd](app, cli.flags.groupid, cli.flags.openid, callback(command));
         break;
     }
     break;
