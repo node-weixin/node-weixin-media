@@ -5,12 +5,14 @@ var media = require('../');
 var fs = require("fs");
 var path = require("path");
 
+var app = {
+  id: process.env.APP_ID,
+  secret: process.env.APP_SECRET,
+  token: process.env.APP_TOKEN
+};
+
 describe('node-weixin-media node module', function () {
-  var app = {
-    id: process.env.APP_ID,
-    secret: process.env.APP_SECRET,
-    token: process.env.APP_TOKEN
-  };
+
   var config = require("node-weixin-config");
   config.app.init(app);
 

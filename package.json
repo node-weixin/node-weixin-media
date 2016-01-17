@@ -1,6 +1,6 @@
 {
   "name": "node-weixin-media",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Media Api for weixin",
   "author": {
     "name": "calidion",
@@ -21,9 +21,9 @@
   ],
   "dependencies": {
     "meow": "^3.1.0",
-    "node-weixin-auth": "^0.2.7",
+    "node-weixin-auth": "^0.3.0",
     "node-weixin-request": "^0.3.0",
-    "node-weixin-settings": "0.0.6",
+    "node-weixin-settings": "0.1.0",
     "node-weixin-util": "^0.2.0"
   },
   "devDependencies": {
@@ -37,7 +37,7 @@
     "jshint-stylish": "^1.0.1",
     "load-grunt-tasks": "^3.1.0",
     "mocha": "^2.3.3",
-    "node-weixin-config": "^0.1.0",
+    "node-weixin-config": "^0.2.0",
     "time-grunt": "^1.1.0",
     "tmp": "0.0.28",
     "validator": "^4.1.0"
