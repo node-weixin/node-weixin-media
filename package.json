@@ -24,7 +24,8 @@
     "node-weixin-auth": "^0.3.0",
     "node-weixin-request": "^0.3.0",
     "node-weixin-settings": "0.1.0",
-    "node-weixin-util": "^0.2.0"
+    "node-weixin-util": "^0.2.0",
+    "request": "^2.67.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
