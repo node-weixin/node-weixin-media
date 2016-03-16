@@ -117,16 +117,16 @@ describe('node-weixin-media node module', function() {
 
   it('should be able to update a permanent news', function(done) {
     var json = {
-      'media_id': newsId,
-      'index': 0,
-      'articles': {
-        'title': 'hello1',
-        'thumb_media_id': mediaId,
-        'author': 'author2',
-        'digest': 'digest1',
-        'show_cover_pic': 0,
-        'content': 'content1',
-        'content_source_url': 'http://www.sina.com.cn'
+      media_id: newsId,
+      index: 0,
+      articles: {
+        title: 'hello1',
+        thumb_media_id: mediaId,
+        author: 'author2',
+        digest: 'digest1',
+        show_cover_pic: 0,
+        content: 'content1',
+        content_source_url: 'http://www.sina.com.cn'
       }
     };
     media.permanent.update(app, json, function(error, data) {
@@ -148,9 +148,11 @@ describe('node-weixin-media node module', function() {
   });
 
   it('should be able to get media list', function(done) {
-    var type = 'image'; // Type of media
-    var offset = 0; //
-    var limit = 5; // Range from 1 ~ 20
+    // Type of media
+    var type = 'image';
+    var offset = 0;
+    // Range from 1 ~ 20
+    var limit = 5;
 
     media.list(app, type, limit, offset, function(error, json) {
       validit(json.total_count);
