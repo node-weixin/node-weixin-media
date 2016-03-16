@@ -11,6 +11,13 @@ var app = {
   token: process.env.APP_TOKEN
 };
 
+
+function validit(number) {
+  assert.equal(true, typeof number === 'number'
+  && validator.isNumeric(String(number)) && number >= 0);
+
+}
+
 describe('node-weixin-media node module', function () {
 
   var config = require("node-weixin-config");
@@ -26,7 +33,7 @@ describe('node-weixin-media node module', function () {
       assert.equal(true, json.type === 'image');
       assert.equal(true, typeof json.media_id === 'string');
       mediaId = json.media_id;
-      assert.equal(true, validator.isNumeric(json.created_at) && !!new Date(json.created_at));
+      assert.equal(true, typeof json.created_at === 'number' && validator.isNumeric(String(json.created_at)) && !!new Date(json.created_at));
       done();
     });
   });
@@ -133,10 +140,10 @@ describe('node-weixin-media node module', function () {
 
   it('should be able to get media count', function (done) {
     media.count(app, function (error, json) {
-      assert.equal(true, validator.isNumeric(json.voice_count) && json.voice_count >= 0);
-      assert.equal(true, validator.isNumeric(json.video_count) && json.video_count >= 0);
-      assert.equal(true, validator.isNumeric(json.image_count) && json.image_count >= 0);
-      assert.equal(true, validator.isNumeric(json.news_count) && json.news_count >= 0);
+      validit(json.voice_count);
+      validit(json.video_count);
+      validit(json.image_count);
+      validit(json.news_count);
       done();
     });
   });
@@ -147,10 +154,8 @@ describe('node-weixin-media node module', function () {
     var limit = 5;        //Range from 1 ~ 20
 
     media.list(app, type, limit, offset, function (error, json) {
-
-      assert.equal(true, validator.isNumeric(json.total_count) && json.total_count >= 0);
-      assert.equal(true, validator.isNumeric(json.item_count) && json.item_count >= 0);
-
+      validit(json.total_count);
+      validit(json.item_count);
       for (var i = 0; i < json.item.length; i++) {
         var item = json.item[i];
         assert.equal(true, item.media_id.length > 0);
