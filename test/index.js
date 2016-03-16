@@ -23,14 +23,10 @@ function validit(number) {
 describe('node-weixin-media node module', function() {
   var config = require('node-weixin-config');
   config.app.init(app);
-
   var mediaId = null;
   var newsId = null;
-
   it('should be able to upload a temporary media', function(done) {
-    var file;
-    file = path.resolve(__dirname, 'media/image.jpg');
-
+    var file = path.resolve(__dirname, 'media/image.jpg');
     media.temporary.create(app, 'image', file, function(error, json) {
       assert.equal(true, json.type === 'image');
       assert.equal(true, typeof json.media_id === 'string');
@@ -88,7 +84,6 @@ describe('node-weixin-media node module', function() {
   it('should be able to get a permanent media', function(done) {
     var tmp = require('tmp');
     var file = tmp.tmpNameSync();
-
     media.permanent.get(app, mediaId, function(error, body) {
       fs.writeFileSync(file, new Buffer(body));
       done();
