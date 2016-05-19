@@ -3,11 +3,49 @@
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 > 
 
-## Installation
 
-```sh
-$ npm install --save node-weixin-media
-```
+> Media Api for weixin
+
+微信多媒体API
+
+微信多媒体API是([node-weixin-api](https://github.com/node-weixin/node-weixin-api) 或者 [node-weixin-express](https://github.com/node-weixin/node-weixin-express))的一个子项目。
+它提供:
+
+1. 菜单API共计7个:
+
+  temporary.create: 上传多媒体(临时)
+  
+  temporary.get: 获取多媒体(临时)
+  
+  permanent.news: 获取
+  
+  permanent.create: 上传多媒体(永久)
+  
+  permanent.get: 获取多媒体(永久)
+  
+  permanent.remove: 删除多媒体(永久)
+  
+  permanent.update: 更新多媒体(永久)
+  
+  count:  获取组列表
+  
+  list: 创建新组
+  
+
+3. 所有数据返回格式采用json,并与腾讯api上说明一致。回调函数格式如下：
+    function(error, json) {
+    //error为false表示返回正常
+    //json对应api说明
+    }
+    
+注:
+
+交流QQ群: 39287176
+
+ [node-weixin-express](https://github.com/node-weixin/node-weixin-express)是基于node-weixin-*的服务器端参考实现。
+
+ [node-weixin-api](https://github.com/node-weixin/node-weixin-api)是基于node-weixin-*的API接口SDK。
+
 
 ## Usage
 
