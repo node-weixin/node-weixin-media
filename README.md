@@ -1,4 +1,6 @@
-# node-weixin-media [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+# node-weixin-media 
+
+[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 > 
 
 ## Installation
@@ -142,7 +144,7 @@ $ npm install --global node-weixin-media
 $ node-weixin-media --help
 ```
 
-```
+
 ## License
 
 Apache-2.0 © [calidion](calidion.github.io)
